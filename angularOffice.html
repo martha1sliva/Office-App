@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="app" ng-cloak>
+  <head>
+    <title>Colleagues in the Office</title>
+    <style>
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+      display: none;
+    }
+    table{
+      width: 400px;
+      text-align: left;
+      border: 2px solid black;
+      padding: 10px;
+    }
+    input.ng-dirty.ng-invalid {
+      border-color: red;
+    }
+    </style>
+  </head>
+  <body>
+ 
+    <!-- $rootScope to share data between 2 controllers -->
+    <div ng-controller="colCtrl">
+ 
+      <!-- Search for people in the scope -->
+      <label>Enter the colleague you want to search for : </label>
+      <input type="text" maxlength="35" ng-model="colName" />
+      <br><br>
+      <button ng-click="getPersonData()">Submit</button>
+      <br><br>
+ 
+      {{personData}}<br>
+ 
+    </div>
+ 
+    <div ng-controller="colCtrl">
+ 
+      <!-- Add new people -->
+      <label>Name : </label>
+      <input type="text" maxlength="35" ng-model="colName" /><br><br>
+      <label>Full Name : </label>
+      <input type="text" maxlength="35" ng-model="fullName" /><br><br>
+      <label>Phone Number : </label>
+      <input type="text" maxlength="12" ng-model="phone" /><br><br>
+      <button ng-click="addPersonData(fullName, colName, phone)">Add</button>
+ 
+    </div>
+    
+    <div ng-controller="colCtrl">
+      
+      <h3>List of Colleagues</h3>
+      
+      <li ng-repeat="person in person">
+        {{person.colName}}
+      </li>
+      
+    </div>
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="js/exam6.js"></script>
+ 
+  </body>
+</html>
